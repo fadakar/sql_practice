@@ -1,0 +1,23 @@
+version: '3'
+services:
+    
+    mysqllts:
+        image: 'mysql:lts'
+        restart: always
+        ports:
+            - '5008:5008'
+        environment:
+            MYSQL_TCP_PORT: 5008
+            MYSQL_ROOT_PASSWORD: 'rootroot'
+        volumes:
+            - 'learn-sql:/var/lib/mysql'
+        networks:
+            - brd
+      
+networks:
+    brd:
+        driver: bridge
+
+volumes:
+    learn-sql:
+        driver: local
